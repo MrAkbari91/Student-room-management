@@ -1,19 +1,13 @@
 <?php
 	  session_start();
-	  $array = $_SESSION['data'];
+    $array = $_SESSION['data'];
     include 'include/header.php';
+    $userid = $array['userid'];
 
-    if($user_type== "Student"){  
-      $sql = "select * from user where userid='".$username."' and password = '".$password."'";
+    $sql = "SELECT TOP 1 * FROM booking_request WHERE userid = $userid and status = 0 order by userid desc;";
       $result = $con->query($sql);
-      $row = $result->fetch();
-      if($row == true){
-          $_SESSION['data'] = $row;   
-          $array = $_SESSION['data'];
-          if(isset($array)){
-              header("Location: login/student.php");
-          }
-      }
+      $row = $result->fetchAll();      
+
 ?>
 <div>
   <div class="row m-0 pt-5 pb-5">

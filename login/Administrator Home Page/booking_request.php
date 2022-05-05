@@ -1,5 +1,9 @@
  <?php
+    session_start();
+    $array = $_SESSION['data'];
     include 'include/header.php';
+    $sql = "select * from booking_request where status = 0;";
+    $result = $con->query($sql);
 ?>
                     <div class="text-center">
                         <h2 class="d_h2">Booking requests</h2>
@@ -20,15 +24,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($result->fetchAll() as $key => $row) {?>
                                     <tr>
-                                        <td>04/18/2022</td>
-                                        <td>abc xyz</td>
-                                        <td>1234567</td>
-                                        <td>Without roommate</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td><button class="m-2 d_btn">Accept</button><button class="m-2 d_btn">Reject</button></td>
+                                        <td><?php echo $row['created_date'];?></td>
+                                        <td><?php echo $row['created_date'];?></td>
+                                        <td><?php echo $row['userid'];?></td>
+                                        <td><?php echo $row['category'];?></td>
+                                        <td><?php echo $row['building_no'];?></td>
+                                        <td><?php echo $row['room_no'];?></td>
+                                        <td><a onclick="accept()" class="m-2 d_btn" name="accept">Accept</a><a onclick class="m-2 d_btn" name="reject">Reject</a></td>
                                     </tr>
+                                    <?php
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-center">

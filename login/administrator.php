@@ -10,7 +10,7 @@
 								<div class="border-bg mb-4 resident fs-25">
 									<p>Administrator</p>
 								</div>
-								<button class="btn btn-colo box-sh sign-out">Sign Out</button>
+								<a href="logout.php"class="btn btn-colo box-sh sign-out">Sign Out</a>
 							</div>
 						</div>
 					</div>
