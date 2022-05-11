@@ -1,6 +1,15 @@
 		<?php
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		if(isset($_SESSION['data'])){
+		   $array = $_SESSION['data'];
+		}else{
+			echo "<script>location.href='../index.php';</script>";
+		}
 			include 'head.php';
 		?>
+		
 		<div class="w-80 m-auto"> 
 			<div class="row m-0 pt-5 pb-5 align-items-center">
 				<div class="col-md-6 m-auto pt-5 pb-5 border-bg">
@@ -19,18 +28,18 @@
 					<div class="row m-0">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<a href="Administrator Home Page/booking_request.php" class="text"><button class="btn btn-org">Booking<br> Requests</button></a>
+								<a href="admin/booking_request.php" class="text"><button class="btn btn-org">Booking<br> Requests</button></a>
 							</div>
 							<div class="mb-3">
-								<a href="Administrator Home Page/Cancel_Room_Requests.php" class="text"><button class="btn btn-org">Cancel Room<br> Requests</button></a>
+								<a href="admin/Cancel_Room_Requests.php" class="text"><button class="btn btn-org">Cancel Room<br> Requests</button></a>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="mb-3">
-								<a href="Administrator Home Page/change_room_request.php" class="text"><button class="btn btn-org">Change Room <br>Requests</button></a>
+								<a href="admin/change_room_request.php" class="text"><button class="btn btn-org">Change Room <br>Requests</button></a>
 							</div>
 							<div class="mb-3">
-								<a href="Administrator Home Page/maintenance_requests.php" class="text"><button class="btn btn-org">Maintenance<br> Requests</button></a>
+								<a href="admin/maintenance_requests.php" class="text"><button class="btn btn-org">Maintenance<br> Requests</button></a>
 							</div>
 						</div>
 					</div>
