@@ -8,6 +8,12 @@
       echo "<script>location.href='../../index.php';</script>";
     }
     include 'include/header.php';
+    $userid    = $array['userid'];
+    $sql = "SELECT user.category, user.building_no, user.room_no FROM cancle_room_request INNER JOIN user ON user.userid=cancle_room_request.userid;";
+
+    $result = $con->query($sql);
+    $row = $result->fetch();
+
     ?>
     <div>
       <div class="row m-0 pt-5 pb-5">
@@ -30,13 +36,13 @@
                   <td>
                     <div class="mt-5">
                       <div class="bg-text ">
-                        <p class="p-1">Category:</p>
+                        <p class="p-1">Category: <?php echo $row['category']; ?></p>
                       </div>
                       <div class="bg-text ">
-                        <p class="p-1">Building:5</p>
+                        <p class="p-1">Building: <?php echo $row['building_no']; ?></p>
                       </div>
                       <div class="bg-text px-3">
-                        <p class="p-1">Room:5</p>
+                        <p class="p-1">Room: <?php echo $row['room_no']; ?></p>
                       </div>
                     </div>
                   </td>

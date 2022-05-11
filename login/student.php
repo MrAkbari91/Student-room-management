@@ -10,13 +10,14 @@
 
 		include 'head.php';
 		$userid = $array['userid'];
-		$sql = "SELECT* FROM booking_request WHERE userid = '$userid'";
+		$sql = "SELECT count(userid) FROM booking_request WHERE userid = '$userid'";
 		$result = $con->query($sql);
-		$row = $result->fetchAll();
-		// var_dump($row);
-		// die();
+		$row = $result->fetch();
+		$count = $row[0];
 
 		?>
+
+
 
 		<div class="w-80 m-auto">
 			<div class="row m-0 pt-5 pb-5 align-items-center">
@@ -50,18 +51,18 @@
 					<div class="row m-0">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<a href="student/booking_scrren.php" class="text"><button class="btn btn-org">Booking<br> Requests</button></a>
+								<a href="student/booking_scrren.php" class="text btn btn-org" id="bokking_btn">Booking<br> Requests</a>
 							</div>
 							<div class="mb-3">
-								<a href="student/Cancel_Room_Request.php" class="text"><button class="btn btn-org">Cancel Room<br> Requests</button></a>
+								<a href="student/Cancel_Room_Request.php" class="text btn btn-org" id="cancel_room_btn">Cancel Room <br>Requests</a>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="mb-3">
-								<a href="student/Change_Room_Request.php" class="text"><button class="btn btn-org">Change Room <br>Requests</button></a>
+								<a href="student/Change_Room_Request.php" class="text btn btn-org" id="change_room_btn">Change Room <br>Requests</a>
 							</div>
 							<div class="mb-3">
-								<a href="student/Request_Maintainence.php" class="text"><button class="btn btn-org">Maintence<br> Requests</button></a>
+								<a href="student/Request_Maintainence.php" class="text"><button class="btn btn-org" id="maintenence_btn">Maintenence<br> Requests</button></a>
 							</div>
 						</div>
 					</div>

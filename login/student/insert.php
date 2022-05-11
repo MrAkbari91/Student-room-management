@@ -11,7 +11,7 @@ include "include/dbcon.php";
 
 
 if (isset($_POST['book_room'])) {
-    $userid    = $array['userid'];
+    $userid = $array['userid'];
     $Category = $_POST['Category'];
     $Building = $_POST['Building'];
     $Room = $_POST['Room'];
@@ -26,7 +26,7 @@ if (isset($_POST['book_room'])) {
 }
 
 if (isset($_POST['change_room'])) {
-    $userid    = $array['userid'];
+    $userid = $array['userid'];
     $Category = $_POST['Category'];
     $Building = $_POST['Building'];
     $Room = $_POST['Room'];
@@ -36,7 +36,7 @@ if (isset($_POST['change_room'])) {
     $query = "INSERT INTO change_room_request (userid, new_category, new_building_no, new_room_no, created_date, updated_date) VALUES ($userid,'$Category', $Building, $Room , $date, $update_date);";
     $result = $con->query($query);
     if ($result == true) {
-        header("Location: Change_Room_Approved_Report.php");
+        header("Location: Change_Room_Approved_Report_pdf.php");
     }
 }
 

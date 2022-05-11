@@ -8,6 +8,7 @@
 			echo "<script>location.href='../../index.php';</script>";
 		}
       include 'include/header.php';
+      
     ?>
     <div>
       <div class="row m-0 pt-5 pb-5">

@@ -6,7 +6,7 @@
       $array = $_SESSION['data'];
     } else {
       echo "<script>location.href='../../index.php';</script>";
-    }
+    } 
     include 'include/header.php';
     ?>
     <div>

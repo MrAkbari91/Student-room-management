@@ -8,6 +8,9 @@ if (isset($_SESSION['data'])) {
   echo "<script>location.href='../../index.php';</script>";
 }
 include 'include/header.php';
+$sql = "SELECT change_room_request.new_category, change_room_request.new_building_no, change_room_request.new_room_no, user.category, user.building_no, user.room_no FROM change_room_request INNER JOIN user ON user.userid = change_room_request.userid;";
+$result = $con->query($sql);
+$row = $result->fetch();
 ?>
 <div>
   <div class="row m-0 pt-5 pb-5">
@@ -19,28 +22,28 @@ include 'include/header.php';
         <div>
           <div class="row d-flex mt-4 ">
             <div class=" col-md-6 d-flex  m-auto pt-5 pb-5 justify-content-around">
-              <div>
+            <div>
                 <p>From:</p>
-                <div class="bg-text px-3">
-                  <p class="p-1">Building:5</p>
+                <div class="bg-text m-2">
+                  <p class="p-1">Category: <?php echo $row['category']; ?></p>
                 </div>
-                <div class="bg-text px-3">
-                  <p class="p-1">Room:5</p>
+                <div class="bg-text m-2">
+                  <p class="p-1">Building: <?php echo $row['building_no']; ?></p>
                 </div>
-                <div class="bg-text px-3">
-                  <p class="p-1">Category:</p>
+                <div class="bg-text m-2">
+                  <p class="p-1">Room: <?php echo $row['room_no']; ?></p>
                 </div>
               </div>
               <div>
                 <p>To:</p>
-                <div class="bg-text px-3">
-                  <p class="p-1">Building:5</p>
+                <div class="bg-text m-2">
+                  <p class="p-1">Category: <?php echo $row['new_category']; ?></p>
                 </div>
-                <div class="bg-text px-3">
-                  <p class="p-1">Room:5</p>
+                <div class="bg-text m-2">
+                  <p class="p-1">Building: <?php echo $row['new_building_no']; ?></p>
                 </div>
-                <div class="bg-text px-3">
-                  <p class="p-1">Category:</p>
+                <div class="bg-text m-2">
+                  <p class="p-1">Room: <?php echo $row['new_room_no']; ?></p>
                 </div>
               </div>
 

@@ -8,6 +8,12 @@
       echo "<script>location.href='../../index.php';</script>";
     }
     include 'include/header.php';
+    $userid = $array['userid'];
+		$sql = "SELECT * FROM booking_request WHERE userid = '$userid' and status = 1";
+		$result = $con->query($sql);
+    $row = $result->fetchAll();
+    var_dump($row);
+    die();
     ?>
     <div>
       <div class="row m-0 pt-5 pb-5">
@@ -27,7 +33,7 @@
                   <td>
                     <div>
                       <div class="bg-text">
-                        <p class="p-1">Building : 5</p>
+                        
                       </div>
                     </div>
                   </td>
@@ -41,7 +47,7 @@
                   <td>
                     <div>
                       <div class="bg-text ">
-                        <p class="p-1">Building:3</p>
+                        <p class="p-1"><?php echo $row['building_no']; ?></p>
                       </div>
                     </div>
                   </td>
@@ -55,7 +61,7 @@
                   <td>
                     <div>
                       <div class="bg-text ">
-                        <p class="p-1">Room:2</p>
+                        <p class="p-1"><?php echo $row['room_no']; ?></p>
                       </div>
                     </div>
                   </td>
@@ -69,7 +75,7 @@
                   <td>
                     <div>
                       <div class="bg-text ">
-                        <p class="p-1">With out Roommate</p>
+                        <p class="p-1"><?php echo $row['category']; ?></p>
                       </div>
                     </div>
                   </td>

@@ -1,13 +1,17 @@
 <?php
-	if (!isset($_SESSION)) {
-		session_start();
-	}
-	if (isset($_SESSION['data'])) {
-		$array = $_SESSION['data'];
-	} else {
-		echo "<script>location.href='../../index.php';</script>";
-	}
-	include 'include/header.php';
+if (!isset($_SESSION)) {
+	session_start();
+}
+if (isset($_SESSION['data'])) {
+	$array = $_SESSION['data'];
+} else {
+	echo "<script>location.href='../../index.php';</script>";
+}
+include 'include/header.php';
+$userid = $array['userid'];
+$sql = "SELECT * FROM cancle_room_request WHERE userid = '$userid' and status = 0 order by userid desc;";
+$result = $con->query($sql);
+$row = $result->fetch();
 ?>
 <div>
 	<div class="row m-0 pt-5 pb-5">

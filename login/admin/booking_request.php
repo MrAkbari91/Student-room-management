@@ -8,7 +8,7 @@
         echo "<script>location.href='../../index.php';</script>";
     }
     include 'include/header.php';
-    $sql = "SELECT user.username, booking_request.userid, booking_request.category, booking_request.building_no, booking_request.room_no, booking_request.created_date FROM booking_request INNER JOIN user ON user.userid=booking_request.userid;";
+    $sql = "SELECT user.username, booking_request.userid, booking_request.category, booking_request.building_no, booking_request.room_no, booking_request.created_date FROM booking_request INNER JOIN user ON user.userid=booking_request.userid WHERE status IS NULL;";
     $result = $con->query($sql);
     ?>
  <div class="text-center">
@@ -39,8 +39,8 @@
                          <td><?php echo $row['building_no']; ?></td>
                          <td><?php echo $row['room_no']; ?></td>
                          <td>
-                             <a href='query.php?id=<?php echo $row['userid'];?>' class="m-2 d_btn" name="accept">Accept</a>
-                             <a href="query.php"class="m-2 d_btn" name="reject">Reject</a>
+                             <a href='query.php?booking_accid=<?php echo $row['userid'];?>' class="m-2 d_btn" name="accept">Accept</a>
+                             <a href='query.php?booking_rejectid=<?php echo $row['userid'];?>'class="m-2 d_btn" name="reject">Reject</a>
                          </td>
                      </tr>
                  <?php

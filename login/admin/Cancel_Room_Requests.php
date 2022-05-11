@@ -8,10 +8,8 @@
         echo "<script>location.href='../../index.php';</script>";
     }
     include 'include/header.php';
-    $sql = "SELECT user.username, user.userid, user.category, user.building_no, user.room_no, cancle_room_request.created_date FROM cancle_room_request INNER JOIN user ON user.userid=cancle_room_request.userid;";
+    $sql = "SELECT user.username, user.userid, user.category, user.building_no, user.room_no, cancle_room_request.created_date FROM cancle_room_request INNER JOIN user ON user.userid=cancle_room_request.userid WHERE status IS NULL;";
     $result = $con->query($sql);
-    // var_dump($result);
-    // die();
     ?>
  <div class="text-center">
      <h2 class="d_h2">Cancel Room Requests.</h2>
@@ -41,8 +39,8 @@
                          <td><?php echo $row['building_no']; ?></td>
                          <td><?php echo $row['room_no']; ?></td>
                          <td>
-                             <button class="m-2 d_btn">Accept</button>
-                             <button class="m-2 d_btn">Reject</button>
+                             <a href='query.php?cancle_accid=<?php echo $row['userid'];?>' class="m-2 d_btn" name="accept">Accept</a>
+                             <a href='query.php?cancle_rejectid=<?php echo $row['userid'];?>'class="m-2 d_btn" name="reject">Reject</a>
                          </td>
                      </tr>
                  <?php

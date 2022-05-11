@@ -8,10 +8,8 @@
         echo "<script>location.href='../../index.php';</script>";
     }
     include 'include/header.php';
-    $sql = "SELECT user.username, user.userid, user.category, user.building_no, user.room_no, maintainence_request.concern FROM maintainence_request INNER JOIN user ON user.userid=maintainence_request.userid;";
+    $sql = "SELECT user.username, user.userid, user.category, user.building_no, user.room_no, maintainence_request.concern FROM maintainence_request INNER JOIN user ON user.userid=maintainence_request.userid WHERE status IS NULL;";
     $result = $con->query($sql);
-    // var_dump($result);
-    // die()
     ?>
     <div class="text-center">
         <h2 class="d_h2">Maintenance Requests</h2>
@@ -38,7 +36,10 @@
                         <td><?php echo $row['concern']; ?></td>
                         <td><?php echo $row['building_no']; ?></td>
                         <td><?php echo $row['room_no']; ?></td>
-                        <td><button class="m-2 d_btn">Accept</button><button class="m-2 d_btn">Reject</button></td>
+                        <td>
+                             <a href='query.php?maintainence_accid=<?php echo $row['userid'];?>' class="m-2 d_btn" name="accept">Accept</a>
+                             <a href='query.php?maintainence_rejectid=<?php echo $row['userid'];?>'class="m-2 d_btn" name="reject">Reject</a>
+                         </td>
                     </tr>
                     <?php
                 }

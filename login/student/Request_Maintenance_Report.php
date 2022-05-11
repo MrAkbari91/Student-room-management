@@ -21,7 +21,7 @@ include 'include/header.php';
           <div class="row m-0">
             <div class="col-md-12 d-flex justify-content-center">
               <div class="mb-3">
-                <a href="Student Home page/View_Requests.php" class="text"><button class="btn btn-org">View Requests</button></a>
+                <a href="View_Requests.php" class="text"><button class="btn btn-org">View Requests</button></a>
               </div>
             </div>
           </div>

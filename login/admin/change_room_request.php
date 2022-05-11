@@ -8,11 +8,8 @@ if (isset($_SESSION['data'])) {
     echo "<script>location.href='../../index.php';</script>";
 }
 include 'include/header.php';
-$sql = "SELECT user.username, user.userid, change_room_request.new_category, change_room_request.new_building_no, change_room_request.new_room_no, user.category, user.building_no, user.room_no FROM change_room_request INNER JOIN user ON user.userid = change_room_request.userid;";
+$sql = "SELECT user.username, user.userid, change_room_request.new_category, change_room_request.new_building_no, change_room_request.new_room_no, user.category, user.building_no, user.room_no FROM change_room_request INNER JOIN user ON user.userid = change_room_request.userid WHERE status IS NULL;";
 $result = $con->query($sql);
-// var_dump($result);
-// die();
-
 ?>
 <div class="text-center">
     <h2 class="d_h2">Change Room Requests.</h2>
@@ -35,9 +32,17 @@ $result = $con->query($sql);
                     <tr>
                         <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['userid']; ?></td>
-                        <td>Category: <?php echo $row['category']; ?> <br> Building: <?php echo $row['building_no']; ?> <br> Room: <?php echo $row['room_no']; ?></td>
-                        <td>Category: <?php echo $row['new_category']; ?> <br> Building: <?php echo $row['new_building_no']; ?> <br> Room: <?php echo $row['new_room_no']; ?></td>
-                        <td><button class="m-2 d_btn">Accept</button><button class="m-2 d_btn">Reject</button></td>
+                        <td>Category: <?php echo $row['category']; ?>
+                            <br> Building: <?php echo $row['building_no']; ?>
+                            <br> Room: <?php echo $row['room_no']; ?>
+                        </td>
+                        <td>Category: <?php echo $row['new_category']; ?>
+                        <br> Building: <?php echo $row['new_building_no']; ?>
+                        <br> Room: <?php echo $row['new_room_no']; ?></td>
+                        <td>
+                             <a href='query.php?change_accid=<?php echo $row['userid'];?>' class="m-2 d_btn" name="accept">Accept</a>
+                             <a href='query.php?change_rejectid=<?php echo $row['userid'];?>'class="m-2 d_btn" name="reject">Reject</a>
+                         </td>
                     </tr>
                 <?php
                 }

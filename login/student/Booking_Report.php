@@ -11,10 +11,9 @@ if (isset($_SESSION['data'])) {
 include 'include/header.php';
 $userid = $array['userid'];
 
-$sql = "SELECT * FROM booking_request WHERE userid = '$userid' and status = 0 order by userid desc;";
+$sql = "SELECT * FROM booking_request WHERE userid = '$userid' order by userid desc;";
 $result = $con->query($sql);
-$row = $result->fetchAll();
-
+$row = $result->fetch();
 ?>
 <div>
   <div class="row m-0 pt-5 pb-5">
@@ -69,7 +68,7 @@ $row = $result->fetchAll();
                   </td>
                   <td class="pl-3">
                     <div class="bg-text">
-                      <p class="p-1">Building <?php echo $row['building_no'];?></p>
+                      <p class="p-1"><?php echo $row['building_no'];?></p>
                     </div>
                   </td>
                 </tr>
@@ -79,7 +78,7 @@ $row = $result->fetchAll();
                   </td>
                   <td class="pl-3">
                     <div class="bg-text">
-                      <p class="p-1">Room <?php echo $row['room_no'];?></p>
+                      <p class="p-1"><?php echo $row['room_no'];?></p>
                     </div>
                   </td>
                 </tr>
