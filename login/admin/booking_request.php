@@ -1,12 +1,4 @@
  <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    if (isset($_SESSION['data'])) {
-        $array = $_SESSION['data'];
-    } else {
-        echo "<script>location.href='../../index.php';</script>";
-    }
     include 'include/header.php';
     $sql = "SELECT user.username, booking_request.userid, booking_request.category, booking_request.building_no, booking_request.room_no, booking_request.created_date FROM booking_request INNER JOIN user ON user.userid=booking_request.userid WHERE status IS NULL;";
     $result = $con->query($sql);

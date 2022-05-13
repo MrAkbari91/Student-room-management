@@ -1,14 +1,19 @@
     <?php
-    if (!isset($_SESSION)) {
-			session_start();
-		}
-		if (isset($_SESSION['data'])) {
-			$array = $_SESSION['data'];
-		} else {
-			echo "<script>location.href='../../index.php';</script>";
-		}
       include 'include/header.php';
+      $userid = $array['userid'];
+
+
+      $book_sql = "SELECT * FROM booking_request where userid = '$userid';";
+      $book_result = $con->query($book_sql);
+      $book_row = $book_result->fetch();
+
+      $change_sql = "SELECT count(userid) FROM change_room_request where userid = '$userid';";
+      $change_result = $con->query($change_sql);
+      $change_row = $change_result->fetch();
       
+      $cancle_sql = "SELECT count(userid) FROM cancle_room_request where userid = '$userid';";
+      $cancle_result = $con->query($cancle_sql);
+      $cancle_row = $cancle_result->fetch();
     ?>
     <div>
       <div class="row m-0 pt-5 pb-5">
@@ -28,12 +33,14 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php if($book_row) {?>
                   <tr>
-                    <th>1/5/2022</th>
+                    <th><?php echo $book_row['created_date'];?></th>
                     <td>Change Room</td>
                     <td>Accepted</td>
                     <td><a href="Change_Room_Approved_Report_pdf.php">pdf</a></td>
                   </tr>
+                  <?php } ?>
                   <tr>
                     <th>2/5/2022</th>
                     <td>Booking Room</td>                    

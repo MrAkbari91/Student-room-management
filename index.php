@@ -1,5 +1,13 @@
 <?php
-	include ('dbcon.php');
+	include ($_SERVER['DOCUMENT_ROOT'].'/project/dbcon.php');
+	if(isset($_SESSION['isadminLogin']) && $_SESSION['isadminLogin']){
+		header("Location: /login/administrator.php");
+		exit();
+	}
+	if(isset($_SESSION['isstudentLogin']) && $_SESSION['isstudentLogin']){
+		header("Location: /login/student.php");
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +30,7 @@
 				<img src="image/download.jpeg" class="w-75" alt="logo">
 			</div>
 			<div>
-				<h2 class="text-white"> Jubail University College <br> Booking</h2>
+				<h2 class="text-white"> Jubail University College <br> Dormitory system</h2>
 			</div>
 			<div>
 				<img src="image/rightimg.png" class="w-75" alt="rightimg">
@@ -38,6 +46,24 @@
 						<div>
 							<form method="post" action="login.php">
 								<table class="m-auto">
+									<?php
+										if(isset($_GET['usertype']) && $_GET['usertype'] == "no"){ ?>
+											<tr>
+												<td class="pr-3" colspan="2">
+													<p class="text-center bg-danger text-white p-3"> Please select User type.</p>
+												</td>
+											</tr>
+									<?php	}
+									?>
+									<?php
+										if(isset($_GET['login']) && $_GET['login'] == "no"){ ?>
+											<tr>
+												<td class="pr-3" colspan="2">
+													<p class="text-center bg-danger text-white p-3">Invalid Username Password.</p>
+												</td>
+											</tr>
+									<?php	}
+									?>
 									<tr>
 										<td class="pr-3">
 											<label class="btn-colo" for="u_type">User Type</label>

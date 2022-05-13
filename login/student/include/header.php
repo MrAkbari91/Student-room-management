@@ -1,5 +1,9 @@
 <?php
-include("dbcon.php");
+	include $_SERVER['DOCUMENT_ROOT']."/project/dbcon.php";
+    if(!$_SESSION['isstudentLogin']){
+		header("Location: /index.php");
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html>

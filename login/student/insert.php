@@ -1,12 +1,4 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-if (isset($_SESSION['data'])) {
-    $array = $_SESSION['data'];
-} else {
-    echo "<script>location.href='../../index.php';</script>";
-}
 include "include/dbcon.php";
 
 
@@ -49,7 +41,7 @@ if (isset($_POST['cancel_room'])) {
     $query = "INSERT INTO cancle_room_request (userid, reason, created_date, updated_date) VALUES ($userid, '$reason', $date, $update_date);";
     $result = $con->query($query);
     if ($result == true) {
-        header("Location: Cancel_Room_Approved_Report.php");
+        header("Location: Cancelation_Report.php");
     }
 }
 

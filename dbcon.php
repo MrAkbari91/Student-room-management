@@ -1,5 +1,6 @@
 <?php
-$conn = $_SERVER["DOCUMENT_ROOT"] . "\project\database\dormitory.accdb";
+session_start();
+$conn = $_SERVER["DOCUMENT_ROOT"] . "/project/database/dormitory.accdb";
 if (!file_exists($conn)) {
     die("Could not find database file.");
  }

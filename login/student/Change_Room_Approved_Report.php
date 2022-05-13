@@ -1,12 +1,4 @@
 <?php
-if (!isset($_SESSION)) {
-  session_start();
-}
-if (isset($_SESSION['data'])) {
-  $array = $_SESSION['data'];
-} else {
-  echo "<script>location.href='../../index.php';</script>";
-}
 include 'include/header.php';
 $sql = "SELECT change_room_request.new_category, change_room_request.new_building_no, change_room_request.new_room_no, user.category, user.building_no, user.room_no FROM change_room_request INNER JOIN user ON user.userid = change_room_request.userid;";
 $result = $con->query($sql);

@@ -1,12 +1,4 @@
     <?php
-	if (!isset($_SESSION)) {
-		session_start();
-	}
-	if (isset($_SESSION['data'])) {
-		$array = $_SESSION['data'];
-	} else {
-		echo "<script>location.href='../../index.php';</script>";
-	}
 	include 'include/header.php';
 	?>
     <div>

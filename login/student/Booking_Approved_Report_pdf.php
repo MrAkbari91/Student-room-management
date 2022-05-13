@@ -1,19 +1,10 @@
 <?php
-    if (!isset($_SESSION)) {
-      session_start();
-    }
-    if (isset($_SESSION['data'])) {
-      $array = $_SESSION['data'];
-    } else {
-      echo "<script>location.href='../../index.php';</script>";
-    }
     include 'include/header.php';
     $userid = $array['userid'];
 		$sql = "SELECT * FROM booking_request WHERE userid = '$userid' and status = 1";
 		$result = $con->query($sql);
     $row = $result->fetch();
-    var_dump($row);
-    die();
+ 
     ?>
     <div>
       <div class="row m-0 pt-5 pb-5">
