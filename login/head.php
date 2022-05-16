@@ -1,6 +1,6 @@
 <?php
 	include $_SERVER['DOCUMENT_ROOT']."/project/dbcon.php";
-	include $_SERVER['DOCUMENT_ROOT']."/project/login/validation.php";
+	// include $_SERVER['DOCUMENT_ROOT']."/project/login/validation.php";
 	
 ?>
 <!DOCTYPE html>

@@ -1,8 +1,17 @@
 <?php
 include 'include/header.php';
-$sql = "SELECT change_room_request.new_category, change_room_request.new_building_no, change_room_request.new_room_no, user.category, user.building_no, user.room_no FROM change_room_request INNER JOIN user ON user.userid = change_room_request.userid;";
-$result = $con->query($sql);
-$row = $result->fetch();
+
+	$array = $_SESSION['data'];
+	$userid = $array['userid'];
+	$bookrequestid = $_GET['bookrequestid'];
+	$sql = "SELECT * FROM change_room_request WHERE userid = '$userid' AND ID = $bookrequestid;";
+	$result = $con->query($sql);
+	$requestdata = $result->fetchAll()[0]; 
+	
+	$sql = "SELECT * FROM user WHERE userid = '$userid'";
+	$result = $con->query($sql);
+	$userdata = $result->fetchAll()[0]; 
+	
 ?>
 <div>
   <div class="row m-0 pt-5 pb-5">
@@ -13,36 +22,36 @@ $row = $result->fetch();
         </div>
         <div>
           <div class="row d-flex mt-4 ">
-            <div class=" col-md-6 d-flex  m-auto pt-5 pb-5 justify-content-around">
-            <div>
+            <div class=" col-md-10 d-flex  m-auto pt-5 pb-5 justify-content-around">
+              <div>
                 <p>From:</p>
-                <div class="bg-text m-2">
-                  <p class="p-1">Category: <?php echo $row['category']; ?></p>
+                <div class="bg-text px-3">
+                  <p class="p-1">Category:<?=$userdata['category']?></p>
                 </div>
-                <div class="bg-text m-2">
-                  <p class="p-1">Building: <?php echo $row['building_no']; ?></p>
+                <div class="bg-text px-3">
+                  <p class="p-1">Building:<?=$userdata['building_no']?></p>
                 </div>
-                <div class="bg-text m-2">
-                  <p class="p-1">Room: <?php echo $row['room_no']; ?></p>
+                <div class="bg-text px-3">
+                  <p class="p-1">Room:<?=$userdata['room_no']?></p>
                 </div>
               </div>
               <div>
                 <p>To:</p>
-                <div class="bg-text m-2">
-                  <p class="p-1">Category: <?php echo $row['new_category']; ?></p>
+                <div class="bg-text px-3">
+                  <p class="p-1">Category:<?=$requestdata['new_category']?></p>
                 </div>
-                <div class="bg-text m-2">
-                  <p class="p-1">Building: <?php echo $row['new_building_no']; ?></p>
+                <div class="bg-text px-3">
+                  <p class="p-1">Building:<?=$requestdata['new_building_no']?></p>
                 </div>
-                <div class="bg-text m-2">
-                  <p class="p-1">Room: <?php echo $row['new_room_no']; ?></p>
+                <div class="bg-text px-3">
+                  <p class="p-1">Room:<?=$requestdata['new_room_no']?></p>
                 </div>
               </div>
 
             </div>
           </div>
           <div class="text-center w-75 m-auto">
-            <p class="label_text">A change Request has been send to administrator</p>
+            <p class="label_text">A change request has been send to administrator</p>
             <div class="row m-0">
               <div class="col-md-12 d-flex justify-content-center">
                 <div class="mb-3">
@@ -52,7 +61,7 @@ $row = $result->fetch();
             </div>
           </div>
           <div class="d-flex justify-content-center ">
-            <a href="Change_Room_Request.php"><button class="btn btn-colo box-sh w-1 mt-2">Back</button></a>
+            <a href="../student.php"><button class="btn btn-colo box-sh w-1 mt-2">Back</button></a>
           </div>
         </div>
       </div>

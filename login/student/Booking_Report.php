@@ -1,10 +1,13 @@
 <?php
 include 'include/header.php';
-$userid = $array['userid'];
 
-$sql = "SELECT * FROM booking_request WHERE userid = '$userid' order by userid desc;";
+$array = $_SESSION['data'];
+$userid = $array['userid'];
+$bookrequestid = $_GET['bookrequestid'];
+$sql = "SELECT * FROM booking_request WHERE userid = '$userid' AND id = $bookrequestid;";
 $result = $con->query($sql);
-$row = $result->fetch();
+$row = $result->fetchAll()[0];
+
 ?>
 <div>
   <div class="row m-0 pt-5 pb-5">
@@ -49,7 +52,7 @@ $row = $result->fetch();
                   </td>
                   <td class="pl-3">
                     <div class="bg-text">
-                      <p class="p-1"><?php echo $row['category'];?></p>
+                      <p class="p-1"><?= $row['category'] ?></p>
                     </div>
                   </td>
                 </tr>
@@ -59,7 +62,7 @@ $row = $result->fetch();
                   </td>
                   <td class="pl-3">
                     <div class="bg-text">
-                      <p class="p-1"><?php echo $row['building_no'];?></p>
+                      <p class="p-1">Building <?= $row['building_no'] ?></p>
                     </div>
                   </td>
                 </tr>
@@ -69,26 +72,20 @@ $row = $result->fetch();
                   </td>
                   <td class="pl-3">
                     <div class="bg-text">
-                      <p class="p-1"><?php echo $row['room_no'];?></p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <div class="row m-0">
-                      <div class="col-md-12 d-flex justify-content-center">
-                        <div class="mb-3">
-                          <a href="View_Requests.php" class="text"><button class="btn btn-org">View Requests</button></a>
-                        </div>
-                      </div>
+                      <p class="p-1">Room <?= $row['room_no'] ?></p>
                     </div>
                   </td>
                 </tr>
               </table>
             </div>
           </div>
+          <div class="text-center p-4">
+            <label class="label_text py-3">To check your Request Status please go to view requests.</label>
+
+          </div>
           <div class="d-flex justify-content-center ">
-            <a href="booking_scrren.php"><button class="btn btn-colo box-sh w-1 mt-5">Back</button></a>
+            <a href="../student.php"><button class="btn btn-colo box-sh w-1 mt-3">Back</button></a>
+            <a href="View_Requests.php" class="text pl-4"><button class="btn btn-colo box-sh w-1 mt-3">View Requests</button></a>
           </div>
         </div>
       </div>

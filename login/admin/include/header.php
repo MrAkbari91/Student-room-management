@@ -1,9 +1,6 @@
 <?php
 	include $_SERVER['DOCUMENT_ROOT']."/project/dbcon.php";
-    if(!$_SESSION['isadminLogin']){
-		header("Location: /index.php");
-		exit();
-	}
+	include $_SERVER['DOCUMENT_ROOT']."/project/login/adminvalidation.php";
 ?>
 
 <!DOCTYPE html>

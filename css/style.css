@@ -58,9 +58,12 @@ input,select{
     padding: 10px 40px!important;
     text-align: center!important;
     color: white!important;
-    border-radius: 20px!important;
+    border-radius: 5px!important;
    	font-weight: 700;
     font-size: 18px;
+}
+.grayback .btn-org{
+	background-color:gray !important;
 }
 .w-80{
 	width: 80%;
@@ -134,4 +137,7 @@ td  a{
 /*---------*/
 .fs-25{
 	font-size: 25px!important;
+}
+.fs-20{
+	font-size: 20px!important;
 }

@@ -18,7 +18,7 @@ include 'include/header.php';
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <a href="Request_Maintainence.php"><button class="btn btn-colo box-sh mx-1 w-1">Back</button></a>
+            <a href="../student.php"><button class="btn btn-colo box-sh mx-1 w-1">Back</button></a>
           </div>
         </div>
       </div>

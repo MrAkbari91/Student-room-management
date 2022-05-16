@@ -1,5 +1,9 @@
-		<?php
+<?php
 			include 'head.php';
+			if(!$_SESSION['isstudentLogin']){
+				header("Location: index.php");
+				exit();
+			}
 			$array = $_SESSION['data'];
 		?>
 
@@ -47,6 +51,8 @@
 								</div>
 							<?php } ?>
 								
+							
+							
 						</div>
 						<div class="col-md-4 text-center">
 							<div>
@@ -59,8 +65,6 @@
 						</div>
 					</div>
 				</div>
-
-
 				<div class="col-md-6 m-auto pt-5 pb-5">
 					<div class="row m-0">
 						<?php if(isset($_GET['roomfull'])){ ?>
@@ -68,51 +72,45 @@
 								<p class="text-center bg-danger text-white p-3"> Room is FULL!</p>
 							</div>
 						<?php } ?>
-
 						<?php if(isset($_GET['bookfailed'])){ ?>
 							<div class="col-md-12">
 								<p class="text-center bg-danger text-white p-3"> You already have room booked.</p>
 							</div>
 						<?php } ?>
-
 						<?php if(isset($_GET['changeroomfailed']) || isset($_GET['cancelroomfailed']) || isset($_GET['maintainencefailed'])){ ?>
 							<div class="col-md-12">
 								<p class="text-center bg-danger text-white p-3"> Please Book the room first.</p>
 							</div>
 						<?php } ?>
-
 						<div class="col-md-6">
 							<div class="mb-3">
 								<?php if($array['user_status'] == "Resident"){ ?>
-									<a href="#" disabled class="text grayback btn btn-org">Booking<br> Requests</a>
+									<a href="#" disabled class="text grayback"><button class="btn btn-org">Booking<br> Requests</button></a>
 								<?php }else{ ?>
-									<a href="Student/booking_scrren.php" class="text btn btn-org">Booking<br> Requests</a>
+									<a href="Student/booking_scrren.php" class="text"><button class="btn btn-org">Booking<br> Requests</button></a>
 								<?php } ?>
 							</div>
-
 							<div class="mb-3">
 								<?php if($array['user_status'] == "Resident"){ ?>
-									<a href="Student/Cancel_Room_Request.php" class="text btn btn-org">Cancel Room<br> Requests</a>
+									<a href="Student/Cancel_Room_Request.php" class="text"><button class="btn btn-org">Cancel Room<br> Requests</button></a>
 								<?php }else{ ?>
-									<a href="#" class="text grayback btn btn-org">Cancel Room<br> Requests</a>
+									<a href="#" class="text grayback"><button class="btn btn-org">Cancel Room<br> Requests</button></a>
 								<?php } ?>
 							</div>
 						</div>
-
 						<div class="col-md-6">
 							<div class="mb-3">
 								<?php if($array['user_status'] == "Resident"){ ?>
-									<a href="Student/Change_Room_Request.php" class="text btn btn-org">Change Room <br>Requests</a>
+									<a href="Student/Change_Room_Request.php" class="text"><button class="btn btn-org">Change Room <br>Requests</button></a>
 								<?php }else{ ?>
-									<a href="#" class="text grayback btn btn-org">Change Room <br>Requests</a>
+									<a href="#" class="text grayback"><button class="btn btn-org">Change Room <br>Requests</button></a>
 								<?php } ?>
 							</div>
-
 							<div class="mb-3">
 								<?php if($array['user_status'] == "Resident"){ ?>
-									<a href="Student/Request_Maintainence.php" class="text btn btn-org">Maintence<br> Requests</a>
+									<a href="Student/Request_Maintainence.php" class="text"><button class="btn btn-org">Maintence<br> Requests</button></a>
 								<?php }else{ ?>
-									<a href="#" class="text grayback btn btn-org">Maintence<br> Requests</a>
+									<a href="#" class="text grayback"><button class="btn btn-org">Maintence<br> Requests</button></a>
 								<?php } ?>
 							</div>
 						</div>

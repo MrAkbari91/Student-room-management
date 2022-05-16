@@ -1,5 +1,5 @@
 <?php
-	if(!$_SESSION['isstudentLogin']){
+	if(!$_SESSION['isadminLogin']){
 		header("Location: index.php");
 		exit();
 	}

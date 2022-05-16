@@ -1,11 +1,11 @@
 <?php
 	include ($_SERVER['DOCUMENT_ROOT'].'/project/dbcon.php');
 	if(isset($_SESSION['isadminLogin']) && $_SESSION['isadminLogin']){
-		header("Location: /login/administrator.php");
+		header("Location: /project/login/administrator.php");
 		exit();
 	}
 	if(isset($_SESSION['isstudentLogin']) && $_SESSION['isstudentLogin']){
-		header("Location: /login/student.php");
+		header("Location: /project/login/student.php");
 		exit();
 	}
 ?>
